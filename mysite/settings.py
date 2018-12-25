@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -73,11 +74,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+DATABASES_PASSWORD = os.getenv("PASSWORD")
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shop',  # DB명
+        'USER': 'root',  # 데이터베이스 계정
+        'PASSWORD': DATABASES_PASSWORD,  # 계정 비밀번호
+        'HOST': '127.0.0.1',  # 데이테베이스 주소(IP)
+        'PORT': '3306',  # 데이터베이스 포트(보통은 3306)
     }
 }
 
