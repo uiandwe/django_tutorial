@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'flavors.apps.FlavorsConfig',
-    'core.apps.CoreConfig'
+    'core.apps.CoreConfig',
+    'movies.apps.MovieConfig',
+    'score.apps.ScoreConfig'
 ]
 
 MIDDLEWARE = [
