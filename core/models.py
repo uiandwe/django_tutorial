@@ -9,3 +9,12 @@ class TimeStampeModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class FileModel(models.Model):
+    folder = models.CharField(max_length=255)
+    dateFolderPath = models.CharField(max_length=255)
+    fileName = models.CharField(max_length=255)
+
+    class Meta:
+        abstract = True
