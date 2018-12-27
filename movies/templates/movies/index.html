@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +8,9 @@
     <title>Title</title>
     <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
     <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body id="body">
     <div id="body_container">
         <div class="body_wrap">
             <video width="640" height="360" controls="controls" class="video-js vjs-default-skin" data-setup="{}" muted autoplay loop>
