@@ -1,9 +1,31 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li>{{ question }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+</head>
+<body>
+    <div id="body_container">
+        <div class="body_wrap">
+            <video width="640" height="360" controls="controls" class="video-js vjs-default-skin" data-setup="{}" muted autoplay loop>
+                <source src="{% static '8.mp4' %}" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+    {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+            <li>{{ question }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
+
+
