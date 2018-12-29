@@ -8,25 +8,42 @@
     <title>Title</title>
     <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
     <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <link href="{% sass_src 'css/init.scss' %}" rel="stylesheet" type="text/css" />
     <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css" />
 </head>
 <body id="body">
     <div id="body_container">
         <div class="body_wrap">
-            <video width="640" height="360" controls="controls" class="video-js vjs-default-skin" data-setup="{}" muted autoplay loop>
-                <source src="{% static '8.mp4' %}" type="video/mp4" />
-            </video>
+            <div class="question_wrap">
+                <div class="life_wrap">
+                    <ul class="life_list">
+                        <li class="life_one"></li>
+                        <li class="life_two"></li>
+                        <li class="life_three"></li>
+                    </ul>
+                </div>
+
+                <div class="question_video_wrap">
+                    <video width="640" height="360" controls="controls" class="video-js vjs-default-skin" data-setup="{}" muted autoplay loop>
+                        <source src="{% static '8.mp4' %}" type="video/mp4" />
+                    </video>
+                </div>
+
+                <div class="question_example_wrap">
+                    {% if latest_question_list %}
+                        <ul class="example_wrap">
+                        {% for question in latest_question_list %}
+                            <li class="example">{{ question }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No example are available.</p>
+                    {% endif %}
+                </div>
+
+            </div>
         </div>
     </div>
-    {% if latest_question_list %}
-        <ul>
-        {% for question in latest_question_list %}
-            <li>{{ question }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
 </body>
 </html>
 
