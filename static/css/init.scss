@@ -1,0 +1,66 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,legend,button
+form,fieldset,input,textarea,p,blockquote,th,td {
+　　padding: 0;
+　　margin: 0;
+}
+/* Modified as appropriate */
+body {
+    background:#fff;color:#333;font-size:12px; margin-top:5px;font-family:"SimSun","Times New Roman","Arial Narrow";
+}
+
+/* A short reference values: 'or"" */
+q:before,q:after {content:"";}
+
+/* Abbreviations, pictures without borders */
+fieldset,img,abbr,acronym {border: 0 none;}
+abbr,acronym {font-variant: normal;}
+legend {color:#000;}
+
+/* Remove special marking the font and font size */
+address,caption,cite,code,dfn,em,strong,th,var {
+　　font-weight: normal;
+　　font-style: normal;
+}
+
+/* Superscript and subscript */
+sup {vertical-align: text-top;}
+sub {vertical-align: text-bottom;}
+
+/* The frame table were combined into a single frame, specify the separation between the cell border boundary in the model of distance is 0*/
+table {
+　　border-collapse: collapse;
+　　border-spacing: 0;
+}
+
+/* The table header and content of the left shows */
+caption,th {text-align: left;}
+input,img,select {vertical-align:middle;}
+
+/* Clear list style */
+ol,ul {list-style: none;}
+
+/* The input control fonts */
+input,button,textarea,select,optgroup,option {
+    font-family:inherit;
+    font-size:inherit;
+    font-style:inherit;
+    font-weight:inherit;
+}
+
+/* The caption element style clearance */
+h1,h2,h3,h4,h5,h6 {
+　　font-weight: normal;
+　　font-size: 100%;
+}
+
+/* Link style, color can be modified as appropriate */
+del,ins,a {text-decoration:none;}
+a:link {color:#009;}
+a:visited {color:#800080;}
+a:hover,a:active,a:focus {color:#c00; text-decoration:underline;}
+
+/* Mouse style */
+button {cursor: pointer;}
+input::-moz-focus-inner { border: 0; padding: 0;}
+
+.clear {clear:both;}
