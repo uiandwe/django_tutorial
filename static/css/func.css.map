@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "func.css",
+	"sources": [
+		"func.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,MAAM,CAAA,EACF,KAAK,EAAC,IAAI,EACV,QAAQ,EAAC,MAAM,GAClB"
+}
