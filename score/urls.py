@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'movies'
+app_name = 'score'
 urlpatterns = [
-    path('', views.question, name='question')
+    path('', views.score, name='score')
 ]

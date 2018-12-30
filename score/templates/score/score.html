@@ -1,0 +1,23 @@
+{% extends 'score/index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="ranking_wrap">
+    <div class="top_ranking_wrap clear">
+
+    </div>
+
+    <div class="now_ranking_wrap">
+        {% if latest_question_list %}
+            <ul class="example_wrap clear">
+            {% for question in latest_question_list %}
+                <li class="example">{{ question }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No example are available.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
