@@ -26,7 +26,7 @@ SECRET_KEY = 'q_-&5#!laa9ndxrkby05vv9l!3^_lpzr@bte=k40eevmnah!i^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'flavors.apps.FlavorsConfig',
     'core.apps.CoreConfig',
     'movies.apps.MovieConfig',
-    'score.apps.ScoreConfig'
+    'score.apps.ScoreConfig',
+
+    'rest_framework',
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
