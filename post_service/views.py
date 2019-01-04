@@ -13,7 +13,8 @@ def post_list(request):
 
     page_data = Paginator(Post.objects.all(), 5)
     page = request.GET.get("page")
-
+    if page is None:
+        page = 1
 
     try:
         posts = page_data.page(page)
@@ -22,6 +23,6 @@ def post_list(request):
     except EmptyPage:
         posts = page_data.page(page_data.num_pages)
 
-    context = {'post_list': posts}
+    context = {'post_list': posts, 'current_page': int(page), 'total_page': range(1, page_data.num_pages+1) }
 
     return HttpResponse(template.render(context))
