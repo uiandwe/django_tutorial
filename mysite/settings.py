@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'movies.apps.MovieConfig',
     'score.apps.ScoreConfig',
+    'blog.apps.BlogConfig',
 
     'rest_framework',
     'rest_framework_swagger'
