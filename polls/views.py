@@ -27,9 +27,13 @@ class DetailView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         datas = Question.objects.filter(pub_date__lte=timezone.now())
-        print(datas.values_list())
-        print(datas[0])
-        print(datas[0].choice_set.all())
+        # print(datas.values_list())
+        # print(datas[0])
+        # print(datas[0].choice_set.all())
+        if datas.exists():
+            for data in datas:
+                d = data
+
         return datas
 
 
