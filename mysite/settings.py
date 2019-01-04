@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'movies.apps.MovieConfig',
     'score.apps.ScoreConfig',
     'blog.apps.BlogConfig',
+    'post_service.apps.PostServiceConfig',
 
     'rest_framework',
     'rest_framework_swagger'

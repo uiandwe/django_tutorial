@@ -32,5 +32,7 @@ urlpatterns = [
     url(r'^rest-swagger/', schema_view),
 
     url(r'^blog/', blog_page),
-    url(r'api/blog/', blog_api.as_view())
+    url(r'api/blog/', blog_api.as_view()),
+
+    url(r'board/', include('post_service.urls'))
 ]
