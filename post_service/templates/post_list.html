@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-시발 {{ python_world }}
+    <table>
+        <thead>
+        <th>
+            <tr>제목</tr>
+            <tr>작성자</tr>
+        </th>
+
+        </thead>
+        <tbody>
+        {% for post in post_list %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.author }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
