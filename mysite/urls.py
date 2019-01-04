@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include
 from rest_framework_swagger.views import  get_swagger_view
 
-from blog.views import blog_page
+from blog.views import blog_page, blog_api
 
 
 schema_view = get_swagger_view(title='rest API')
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^rest-api/', include('rest_framework.urls')),
     url(r'^rest-swagger/', schema_view),
 
-    url(r'^blog/', blog_page)
+    url(r'^blog/', blog_page),
+    url(r'api/blog/', blog_api.as_view())
 ]
