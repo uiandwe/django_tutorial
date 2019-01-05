@@ -17,11 +17,15 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
 from rest_framework_swagger.views import  get_swagger_view
+from rest_framework import routers
 
 from blog.views import blog_page, blog_api
-
+import member.api
 
 schema_view = get_swagger_view(title='rest API')
+
+router = routers.DefaultRouter()
+router.register('', member.api.MemberViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -34,5 +38,7 @@ urlpatterns = [
     url(r'^blog/', blog_page),
     url(r'api/blog/', blog_api.as_view()),
     url(r'user/', include('user_manager.urls')),
-    url(r'board/', include('post_service.urls'))
+    url(r'board/', include('post_service.urls')),
+    url(r'api/member/', include((router.urls, 'member'), namespace='api')),
+    url(r'^api/doc', get_swagger_view(title='Rest API Document')),
 ]

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'post_service.apps.PostServiceConfig',
     'user_manager.apps.UserManagerConfig',
+    'member.apps.MemberConfig',
 
     'rest_framework',
     'rest_framework_swagger'
