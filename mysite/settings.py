@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'score.apps.ScoreConfig',
     'blog.apps.BlogConfig',
     'post_service.apps.PostServiceConfig',
+    'user_manager.apps.UserManagerConfig',
 
     'rest_framework',
     'rest_framework_swagger'

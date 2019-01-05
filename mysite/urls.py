@@ -33,6 +33,6 @@ urlpatterns = [
 
     url(r'^blog/', blog_page),
     url(r'api/blog/', blog_api.as_view()),
-
+    url(r'user/', include('user_manager.urls')),
     url(r'board/', include('post_service.urls'))
 ]
