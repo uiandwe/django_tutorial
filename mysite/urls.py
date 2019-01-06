@@ -20,12 +20,16 @@ from rest_framework_swagger.views import  get_swagger_view
 from rest_framework import routers
 
 from blog.views import blog_page, blog_api
+from quickstart.views import UserViewSet, GroupViewSet
 import member.api
 
 schema_view = get_swagger_view(title='rest API')
 
 router = routers.DefaultRouter()
 router.register('', member.api.MemberViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -39,6 +43,8 @@ urlpatterns = [
     url(r'api/blog/', blog_api.as_view()),
     url(r'user/', include('user_manager.urls')),
     url(r'board/', include('post_service.urls')),
+    url(r'^', include(router.urls)),
     url(r'api/member/', include((router.urls, 'member'), namespace='api')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

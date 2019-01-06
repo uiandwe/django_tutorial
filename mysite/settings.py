@@ -48,10 +48,16 @@ INSTALLED_APPS = [
     'post_service.apps.PostServiceConfig',
     'user_manager.apps.UserManagerConfig',
     'member.apps.MemberConfig',
-
+    'quickstart.apps.QuickstartConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
