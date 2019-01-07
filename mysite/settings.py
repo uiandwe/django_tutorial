@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'user_manager.apps.UserManagerConfig',
     'member.apps.MemberConfig',
     'quickstart.apps.QuickstartConfig',
+    'post.apps.PostConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]

@@ -45,6 +45,8 @@ urlpatterns = [
     url(r'board/', include('post_service.urls')),
     url(r'^', include(router.urls)),
     url(r'api/member/', include((router.urls, 'member'), namespace='api')),
+    url(r'api/post/', include('post.urls')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
 ]
