@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'post.apps.PostConfig',
     'todos.apps.TodosConfig',
     'spauser.apps.SpauserConfig',
+    'journal.apps.JournalConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]

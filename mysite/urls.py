@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^movies/', include('movies.urls')),
     url(r'^score/', include('score.urls')),
+    url(r'^journal/', include('journal.urls')),
     url(r'^rest-api/', include('rest_framework.urls')),
     url(r'^rest-swagger/', schema_view),
 
