@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'member.apps.MemberConfig',
     'quickstart.apps.QuickstartConfig',
     'post.apps.PostConfig',
+    'todos.apps.TodosConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]
