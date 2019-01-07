@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include
 from rest_framework_swagger.views import  get_swagger_view
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token
 
 from blog.views import blog_page, blog_api
 from quickstart.views import UserViewSet, GroupViewSet
@@ -48,6 +49,8 @@ urlpatterns = [
     url(r'api/post/', include('post.urls')),
     url(r'api/todo/', include('todos.urls')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
+    url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
 
 ]
