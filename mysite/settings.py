@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'todos.apps.TodosConfig',
     'spauser.apps.SpauserConfig',
     'journal.apps.JournalConfig',
+    'webpack_loader',
+    'article.apps.ArticleConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]
@@ -82,7 +84,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,4 +168,11 @@ SASS_OUTPUT_STYLE = 'compact'
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+        }
 }

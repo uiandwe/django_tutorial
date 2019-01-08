@@ -19,6 +19,9 @@ from django.urls import include
 from rest_framework_swagger.views import  get_swagger_view
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
+from django.urls import path
+from django.views.generic import TemplateView
+
 
 from blog.views import blog_page, blog_api
 from quickstart.views import UserViewSet, GroupViewSet
@@ -34,6 +37,7 @@ router.register(r'groups', GroupViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name="../templates/index.html")),
     url(r'^polls/', include('polls.urls')),
     url(r'^movies/', include('movies.urls')),
     url(r'^score/', include('score.urls')),
