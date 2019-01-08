@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'api/post/', include('post.urls')),
     url(r'api/article/', include('article.urls')),
     url(r'api/todo/', include('todos.urls')),
+    url(r'api/snippets/', include('snippets.urls')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'journal.apps.JournalConfig',
     'webpack_loader',
     'article.apps.ArticleConfig',
+    'snippets.apps.SnippetsConfig',
     'rest_framework',
     'rest_framework_swagger'
 ]
