@@ -34,7 +34,7 @@ router = routers.DefaultRouter()
 router.register('', member.api.MemberViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
-router.register(r'article', ArticleViewSet)
+# router.register(r'article', ArticleViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -53,11 +53,12 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'api/member/', include((router.urls, 'member'), namespace='api')),
     url(r'api/post/', include('post.urls')),
+    url(r'api/article/', include('article.urls')),
     url(r'api/todo/', include('todos.urls')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'article', TemplateView.as_view(template_name='index.html'))
 
 ]
