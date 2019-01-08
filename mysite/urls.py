@@ -31,7 +31,7 @@ import member.api
 schema_view = get_swagger_view(title='rest API')
 
 router = routers.DefaultRouter()
-router.register('', member.api.MemberViewSet)
+router.register(r'member', member.api.MemberViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 # router.register(r'article', ArticleViewSet)

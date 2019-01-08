@@ -3,7 +3,7 @@ from .models import Article
 from .serializers import ArticleSerializer
 
 
-class ArticleViewSet(generics.ListAPIView):
+class ArticleViewSet(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
