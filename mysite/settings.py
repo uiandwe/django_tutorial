@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'djoser',
     'rest_framework.authtoken',
+    'django_celery_beat',
+    'django_celery_results'
 ]
 
 REST_FRAMEWORK = {
@@ -191,4 +193,12 @@ WEBPACK_LOADER = {
 }
 
 BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TAST_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Seoul' #Celery beat가 스케줄러이기 때문에 시간에 대한 정의를 해야함
+
+
