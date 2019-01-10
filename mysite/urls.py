@@ -39,7 +39,7 @@ router.register(r'groups', GroupViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # path('', TemplateView.as_view(template_name="../templates/index.html")),
-    # url(r'api/auth/', include('djoser.urls.authtoken')),
+    url(r'api/auth/', include('djoser.urls.authtoken')),
     url(r'^polls/', include('polls.urls')),
     url(r'^movies/', include('movies.urls')),
     url(r'^score/', include('score.urls')),
