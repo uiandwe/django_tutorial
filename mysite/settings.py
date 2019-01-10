@@ -59,8 +59,8 @@ INSTALLED_APPS = [
     'snippets.apps.SnippetsConfig',
     'rest_framework',
     'rest_framework_swagger',
-    # 'djoser',
-    # 'rest_framework.authtoken',
+    'djoser',
+    'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
