@@ -58,17 +58,28 @@ INSTALLED_APPS = [
     'article.apps.ArticleConfig',
     'snippets.apps.SnippetsConfig',
     'rest_framework',
-    'rest_framework_swagger'
+    'rest_framework_swagger',
+    # 'djoser',
+    # 'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    )
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ],
 }
 
+
+AUTHENTICATION_BACKENDS = (
+   "django.contrib.auth.backends.ModelBackend",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

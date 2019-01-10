@@ -39,6 +39,7 @@ router.register(r'groups', GroupViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # path('', TemplateView.as_view(template_name="../templates/index.html")),
+    # url(r'api/auth/', include('djoser.urls.authtoken')),
     url(r'^polls/', include('polls.urls')),
     url(r'^movies/', include('movies.urls')),
     url(r'^score/', include('score.urls')),
@@ -56,10 +57,11 @@ urlpatterns = [
     url(r'api/article/', include('article.urls')),
     url(r'api/todo/', include('todos.urls')),
     url(r'api/snippets/', include('snippets.urls')),
+    url(r'api/userSnippets/', include('snippets.userUrls')),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls')),
     url(r'article', TemplateView.as_view(template_name='index.html'))
 
 ]
