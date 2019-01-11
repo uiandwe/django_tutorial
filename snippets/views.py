@@ -11,6 +11,7 @@ from rest_framework import status
 import os
 import datetime
 from django.conf import settings
+import hashlib
 
 
 class SnippetList(generics.ListCreateAPIView):
@@ -32,26 +33,34 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def put(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
-        team = get_object_or_404(Snippet, pk=pk)
-
-        serializer = SnippetSerializer(team, request.data)
+        snippet = get_object_or_404(Snippet, pk=pk)
 
         uploaded_file = request.FILES['file']
+        if uploaded_file is not None:
 
-        directory = os.path.dirname(os.path.abspath(__file__)) + "/.." + settings.MEDIA_URL + datetime.datetime.today().strftime('%Y-%m-%d')
+            directory = os.path.dirname(os.path.abspath(__file__)) + "/.." + settings.MEDIA_URL + datetime.datetime.today().strftime('%Y-%m-%d')
 
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
 
-        with open(directory + "/" + uploaded_file.name, 'wb+') as destination:
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
-                destination.close()
+            fileName = hashlib.md5(uploaded_file.name.encode()).hexdigest()
+            fileExtention = os.path.splitext(str(request.FILES['file']))[1].replace(".", "")
+            fileName = fileName +"."+ fileExtention
+            with open(directory + "/" + fileName, 'wb+') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+                    destination.close()
+
+            request.data["fileName"] = fileName
+            request.data["filePath"] = settings.MEDIA_URL
+
+        serializer = SnippetSerializer(snippet, request.data)
 
         if not serializer.is_valid():
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
         serializer.save()
+
         return Response(serializer.data, status.HTTP_200_OK)
 
 

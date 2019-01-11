@@ -8,7 +8,11 @@ class SnippetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Snippet
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner', 'file')
+        fields = ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner', 'file', 'fileName', 'filePath')
+        # read_only_fields = ('fileName', 'filePath')
+        extra_kwargs = {
+            'file': {'write_only': True}
+        }
 
 
 class UserSerializer(serializers.ModelSerializer):

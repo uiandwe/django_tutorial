@@ -21,6 +21,7 @@ class Snippet(models.Model):
     highlighted = models.TextField(default='')
     file = models.FileField(blank=True, default='')
     fileName = models.TextField(default='')
+    filePath = models.TextField(default='')
 
     def save(self, *args, **kwargs):
         """
