@@ -19,6 +19,8 @@ class Snippet(models.Model):
     style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE, null=True)
     highlighted = models.TextField(default='')
+    file = models.FileField(blank=True, default='')
+    fileName = models.TextField(default='')
 
     def save(self, *args, **kwargs):
         """

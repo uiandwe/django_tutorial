@@ -21,6 +21,8 @@ from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.urls import path
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 from blog.views import blog_page, blog_api
@@ -64,4 +66,4 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'article', TemplateView.as_view(template_name='index.html'))
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
