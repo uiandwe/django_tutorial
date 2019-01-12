@@ -81,6 +81,7 @@ urlpatterns = [
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^election/', include('elections.urls')),
     url(r'article', TemplateView.as_view(template_name='index.html'))
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
