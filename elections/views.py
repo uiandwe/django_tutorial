@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Candidate, Poll, Choice
 import datetime
+from django.http import HttpResponseRedirect
+from django.db.models import Sum
 
 
 def index(request):
@@ -37,4 +39,35 @@ def polls(request, poll_id):
         choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
         choice.save()
 
-    return HttpResponse("finish")
+    return HttpResponseRedirect("/election/areas/{}/results".format(poll.area))  # 이걸 추가해주세요
+
+
+def results(request, area):
+    candidates = Candidate.objects.filter(area = area)
+    polls = Poll.objects.filter(area = area)
+    poll_results = []
+    for poll in polls:
+        result = {}
+        result['start_date'] = poll.start_date
+        result['end_date'] = poll.end_date
+
+        # poll.id에 해당하는 전체 투표수
+        total_votes = Choice.objects.filter(poll_id = poll.id).aggregate(Sum('votes'))
+        result['total_votes'] = total_votes['votes__sum']
+
+        rates = [] #지지율
+        for candidate in candidates:
+            # choice가 하나도 없는 경우 - 예외처리로 0을 append
+            try:
+                choice = Choice.objects.get(poll = poll, candidate = candidate)
+                rates.append(
+                    round(choice.votes * 100 / result['total_votes'], 1)
+                    )
+            except :
+                rates.append(0)
+        result['rates'] = rates
+        poll_results.append(result)
+
+    context = {'candidates':candidates, 'area':area,
+    'poll_results' : poll_results}
+    return render(request, 'elections/result.html', context)
