@@ -26,7 +26,7 @@
             <tr>
                 <td> {{ candidate.name }} </td>
                 <td> {{ candidate.introduction }} </td>
-                <td> {{ candidate.area }} </td>
+                <td> <a href = "areas/{{candidate.area}}/">{{candidate.area}}</a> </td>
                 <td>기호 {{ candidate.party_number }} 번</td>
             </tr>
             {% endfor %}
