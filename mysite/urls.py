@@ -23,7 +23,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 from blog.views import blog_page, blog_api
 from quickstart.views import UserViewSet, GroupViewSet
@@ -31,6 +32,21 @@ from article.views import ArticleViewSet
 import member.api
 
 # schema_view = get_swagger_view(title='rest API')
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Snippets API",
+      default_version='v1',
+      description="Test description",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   validators=['flex', 'ssv'],
+   public=True,
+   # permission_classes=(permissions.AllowAny,),
+)
+
 
 router = routers.DefaultRouter()
 router.register(r'member', member.api.MemberViewSet)
@@ -58,9 +74,10 @@ urlpatterns = [
     url(r'api/post/', include('post.urls')),
     url(r'api/article/', include('article.urls')),
     url(r'api/todo/', include('todos.urls')),
-    url(r'api/snippets/', include('snippets.urls')),
-    url(r'api/userSnippets/', include('snippets.userUrls')),
+    # url(r'api/snippets/', include('snippets.urls')),
+    # url(r'api/userSnippets/', include('snippets.userUrls')),
     # url(r'^api/doc', get_swagger_view(title='Rest API Document')),
+    url(r'^api/doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls')),
