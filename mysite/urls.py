@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
-from rest_framework_swagger.views import  get_swagger_view
+# from rest_framework_swagger.views import  get_swagger_view
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.urls import path
@@ -30,7 +30,7 @@ from quickstart.views import UserViewSet, GroupViewSet
 from article.views import ArticleViewSet
 import member.api
 
-schema_view = get_swagger_view(title='rest API')
+# schema_view = get_swagger_view(title='rest API')
 
 router = routers.DefaultRouter()
 router.register(r'member', member.api.MemberViewSet)
@@ -60,7 +60,7 @@ urlpatterns = [
     url(r'api/todo/', include('todos.urls')),
     url(r'api/snippets/', include('snippets.urls')),
     url(r'api/userSnippets/', include('snippets.userUrls')),
-    url(r'^api/doc', get_swagger_view(title='Rest API Document')),
+    # url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'api/api-token-auth/', obtain_jwt_token),
     url(r'api/api-token-verify/', verify_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls')),

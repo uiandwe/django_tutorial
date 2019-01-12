@@ -58,11 +58,12 @@ INSTALLED_APPS = [
     'article.apps.ArticleConfig',
     'snippets.apps.SnippetsConfig',
     'rest_framework',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
     'djoser',
     'rest_framework.authtoken',
     'django_celery_beat',
-    'django_celery_results'
+    'django_celery_results',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
