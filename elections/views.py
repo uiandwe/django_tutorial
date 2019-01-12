@@ -22,3 +22,19 @@ def areas(request, area):
     'area' : area,
     'poll' : poll }
     return render(request, 'elections/area.html', context)
+
+
+def polls(request, poll_id):
+    poll = Poll.objects.get(pk = poll_id)
+    selection = request.POST['choice']
+
+    try:
+        choice = Choice.objects.get(poll_id = poll.id, candidate_id = selection)
+        choice.votes += 1
+        choice.save()
+    except:
+        #최초로 투표하는 경우, DB에 저장된 Choice객체가 없기 때문에 Choice를 새로 생성합니다
+        choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
+        choice.save()
+
+    return HttpResponse("finish")
