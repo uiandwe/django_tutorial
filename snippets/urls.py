@@ -6,11 +6,11 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.SnippetList.as_view()),
-    path('<int:pk>/', views.SnippetDetail.as_view()),
+    url(r'', views.SnippetList.as_view()),
+    url(r'<int:pk>/', views.SnippetDetail.as_view()),
     # url('', views.SnippetList.as_view()),
     # url('<int:pk>/', views.SnippetDetail.as_view()),
-    url(r'^api-auth/', include('rest_framework.urls')),
+    # url(r'^api-auth/', include('rest_framework.urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -74,7 +74,7 @@ urlpatterns = [
     url(r'api/post/', include('post.urls')),
     url(r'api/article/', include('article.urls')),
     url(r'api/todo/', include('todos.urls')),
-    # url(r'api/snippets/', include('snippets.urls')),
+    url(r'api/snippets/', include('snippets.urls')),
     # url(r'api/userSnippets/', include('snippets.userUrls')),
     # url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'^api/doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
