@@ -7,6 +7,12 @@ from __future__ import absolute_import
 from .tasks import app as celery_app
 
 """
+콘솔로 radis 실행 
+$ /Users/uiandwe/Downloads/redis-stable/src/radis-server 
+$ /Users/uiandwe/Downloads/redis-stable/src/radis-client
+> ping 
+으로 서버 실행 확인 
+
 celery worker 실행 $ celery -A /Users/uiandwe/PycharmProjects/django_tutorial/mysite  worker -l info
 - worker 실행시 실행 가능한 task 목록이 있음.
         app.conf.beat_schedule = {
