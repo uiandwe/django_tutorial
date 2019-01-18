@@ -20,7 +20,6 @@ app.autodiscover_tasks()
 
 
 @app.task(bind=True)
-# @current_app.task(name='app.tasks.assets.massage_assets')
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
