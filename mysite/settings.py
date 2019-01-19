@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'article.apps.ArticleConfig',
     'snippets.apps.SnippetsConfig',
+    'lotte.apps.LotteConfig',
     'rest_framework',
     # 'rest_framework_swagger',
     'djoser',
