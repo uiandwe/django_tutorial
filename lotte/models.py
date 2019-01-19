@@ -9,4 +9,5 @@ class Lotte(models.Model):
     number4 = models.IntegerField()
     number5 = models.IntegerField()
     number6 = models.IntegerField()
+    number_set = models.CharField(max_length=255)
     bonus = models.IntegerField()
