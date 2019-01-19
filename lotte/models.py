@@ -9,3 +9,4 @@ class Lotte(models.Model):
     nubmer4 = models.IntegerField()
     nubmer5 = models.IntegerField()
     nubmer6 = models.IntegerField()
+    bonus = models.IntegerField()
